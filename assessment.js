@@ -1,4 +1,34 @@
 "use strict";
+const userNameInput = document.getElementById('user-name');
+const assessmentButton = document.getElementById('assessment');
+const resultDivision = document.getElementById('result-area');
+const tweetDivision = document.getElementById('tweet-area');
+
+assessmentButton.addEventListener(
+  'click',
+  () => {
+    const userName = userNameInput.value;
+    if (userName.length === 0) {
+      return; //名前が空白のときは処理を終了する
+    }
+   
+    resultDivision.innerText = '';
+    const heading = document.createElement('h3');
+    heading.innerText = '診断結果';
+    resultDivision.appendChild(heading);
+
+    const paragraph = document.createElement('p');
+    const result = assessment(userName);
+    paragraph.innerText = result;
+    resultDivision.appendChild(paragraph);
+
+    // TODO ツイートエリアの作成
+    tweetDivision.innerText = '';
+  }
+);
+
+
+
 const answers = [
   "###userName###のいいところは声です。###userName###の特徴的な声は皆を惹きつけ、心に残ります。",
   "###userName###のいいところはまなざしです。###userName###に見つめられた人は、気になって仕方がないでしょう。",
